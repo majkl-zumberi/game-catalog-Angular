@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { GameListService } from '../../services/game-list.service';
+import { from } from 'rxjs';
 @Component({
   selector: 'app-game-list',
   templateUrl: './game-list.component.html',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameListComponent implements OnInit {
 
-  constructor() { }
+  dataFromApi:Object;
+  constructor(private _list:GameListService) { }
 
   ngOnInit(): void {
+    this.dataFromApi=this._list.getDataFromObject();
   }
 
 }
