@@ -1,18 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { GameListService } from '../../services/game-list.service';
-import { from } from 'rxjs';
+import { GameInterface } from '../../models/GameInterface';
+
 @Component({
   selector: 'app-game-list',
   templateUrl: './game-list.component.html',
   styleUrls: ['./game-list.component.scss']
 })
 export class GameListComponent implements OnInit {
-
+  loaded:boolean=false;
+  games:GameInterface[];
   dataFromApi:Object;
-  constructor(private _list:GameListService) { }
+  constructor(private _gameService:GameListService) {}
 
   ngOnInit(): void {
-    this.dataFromApi=this._list.getDataFromObject();
+     this._gameService.getListaGiochi().subscribe(games=>{
+       this.games=games;
+       this.loaded=true;
+     });
+
   }
 
 }

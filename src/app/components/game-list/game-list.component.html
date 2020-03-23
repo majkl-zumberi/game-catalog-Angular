@@ -1,35 +1,9 @@
-<h1>Lista Giochi 👾</h1>
-<ul *ngIf="dataFromApi">
-  <li *ngFor="let game of dataFromApi">
-    <p class="name">{{game.name}}</p>
-    <p class="country">{{game.country}}</p>
-    <a href="#" class="site">site</a>
-  </li>
-</ul>
-<div class="cards">
-  <div class="card">
-    <img src="https://www.gamelegends.it/wp-content/uploads/2014/02/grand-theft-auto-v.jpg" alt="Avatar"
-      style="width:100%">
-    <div class="container">
-      <h4><b>Gta 5</b></h4>
-      <p>rate 5 stars ecc</p>
-    </div>
+<div>
+  <h1>Lista Giochi 👾</h1>
+  <div uk-spinner="ratio: 3" [ngStyle]="{
+    'display': loaded ? 'none' : 'block'
+}"></div>
+  <div class="contenitore">
+    <app-game-item *ngFor="let game of games" [gameItem]="game"></app-game-item>
   </div>
-  <div class="card">
-    <img src="https://www.gamelegends.it/wp-content/uploads/2014/02/grand-theft-auto-v.jpg" alt="Avatar"
-      style="width:100%">
-    <div class="container">
-      <h4><b>Gta 5</b></h4>
-      <p>rate 5 stars ecc</p>
-    </div>
-  </div>
-  <div class="card">
-    <img src="https://www.gamelegends.it/wp-content/uploads/2014/02/grand-theft-auto-v.jpg" alt="Avatar"
-      style="width:100%">
-    <div class="container">
-      <h4><b>Gta 5</b></h4>
-      <p>rate 5 stars ecc</p>
-    </div>
-  </div>
-
 </div>

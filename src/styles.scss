@@ -6,7 +6,7 @@ $primary: rgb(255, 174, 0);
 
 body {
     margin: 0;
-    font-family: 'Nunito', 'sans-serif';
+    font-family: 'Nunito', 'sans-serif'!important;
     font-size: 18px;
 }
 
@@ -20,8 +20,8 @@ header {
     padding: 1em 0;
 
     a {
-        color: white;
-        text-decoration: none;
+        color: white!important;
+        text-decoration: none!important;
     }
     a.logo {
         font-weight: bold;
@@ -31,7 +31,7 @@ header {
         float: right;
 
         ul {
-            list-style-type: none;
+            list-style-type: none!important;
             margin: 0;
             display: flex;
 
