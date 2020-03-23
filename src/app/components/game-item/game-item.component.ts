@@ -9,7 +9,7 @@ import { GameInterface } from 'src/app/models/GameInterface';
 export class GameItemComponent implements OnInit {
 
   @Input() gameItem:GameInterface;
-
+  @Input() showRead:boolean=true;
   constructor() { }
 
   ngOnInit(): void {
