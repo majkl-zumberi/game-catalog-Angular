@@ -7,6 +7,6 @@
     <h3 class="uk-card-title">{{ gameItem.name }}</h3>
     <p class=" uk-margin-remove-top">{{ gameItem.genere | uppercase }}</p>
     <p>{{ gameItem.desc }}</p>
-    <a [routerLink]="['/detail', gameItem.id]">Read more </a>
+    <a [routerLink]="['/detail', gameItem.id]" class="uk-button uk-button-text">Read more </a>
   </div>
 </div>
