@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="gameItem != null || gameItem!=undefined">
   <div class="uk-card uk-card-primary  uk-card-body uk-inline-clip uk-transition-toggle ">
     <div class="uk-card-badge uk-label" *ngIf="gameItem.prezzo=='free to play'; else notFree">{{ gameItem.prezzo}}</div>
     <ng-template #notFree>
