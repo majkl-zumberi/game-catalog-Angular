@@ -10,7 +10,6 @@ import { GameInterface } from '../../models/GameInterface';
 export class GameListComponent implements OnInit {
   loaded:boolean=false;
   games:GameInterface[];
-  dataFromApi:Object;
   constructor(private _gameService:GameListService) {}
 
   ngOnInit(): void {
