@@ -18,7 +18,6 @@ export class EditGameComponent implements OnInit {
   }
 
   filterReq(input):void{
-    console.log("works!"+input);
     this.gameService.FilterListaGiochiGlobally(input).subscribe(games=>{
       this.games=games;
     });

@@ -1,14 +1,12 @@
 <div>
-    <div class="uk-card uk-card-primary  uk-card-body uk-inline-clip uk-transition-toggle ">
-        <ng-template [ngIf]="gameItem.prezzo=='free to play'" [ngIfElse]="notFree">
-            <div class="uk-card-badge uk-label">{{ gameItem.prezzo}}</div>
-        </ng-template>
-        <ng-template #notFree>
-            <div class="uk-card-badge uk-label">{{ gameItem.prezzo}}€</div>
-        </ng-template>
-        <h3 class="uk-card-title">{{ gameItem.name }}</h3>
-        <p class=" uk-margin-remove-top">{{ gameItem.genere | uppercase }}</p>
-        <p>{{ gameItem.desc }}</p>
-        <a href="#" class="uk-button uk-button-text">Read more</a>
-    </div>
+  <div class="uk-card uk-card-primary  uk-card-body uk-inline-clip uk-transition-toggle ">
+    <div class="uk-card-badge uk-label" *ngIf="gameItem.prezzo=='free to play'; else notFree">{{ gameItem.prezzo}}</div>
+    <ng-template #notFree>
+      <div class="uk-card-badge uk-label">{{ gameItem.prezzo}}€</div>
+    </ng-template>
+    <h3 class="uk-card-title">{{ gameItem.name }}</h3>
+    <p class=" uk-margin-remove-top">{{ gameItem.genere | uppercase }}</p>
+    <p>{{ gameItem.desc }}</p>
+    <a [routerLink]="['/detail', gameItem.id]">Read more </a>
+  </div>
 </div>
