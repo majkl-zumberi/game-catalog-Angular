@@ -1,15 +1,1 @@
-<div class="container">
-    <br>
-    <input class="uk-input" type="text" placeholder="inserisci una keyword per cercare i giochi" #filterInput (change)="filterReq(filterInput.value)">
-    <p>stai cercando: {{filterInput.value}}</p>
-    <div *ngIf="!games || games.length === 0">
-        <div class="uk-card uk-card-primary  uk-card-body uk-inline-clip uk-transition-toggle ">
-           
-            <h3 class="uk-card-title">Gioco non trovato</h3>
-            <p class=" uk-margin-remove-top"></p>
-            <p></p>
-            <a href="#" class="uk-button uk-button-text"></a>
-        </div>
-    </div>
-    <app-game-item *ngFor="let game of games" [gameItem]="game"></app-game-item>
-</div>
+<p>game-detail works!</p>

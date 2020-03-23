@@ -12,13 +12,6 @@ export class GameDetailComponent implements OnInit {
   constructor(private gameService:GameListService) { }
 
   ngOnInit(): void {
-    this.filterReq("");
   }
 
-  filterReq(input):void{
-    console.log("works!"+input);
-    this.gameService.FilterListaGiochiGlobally(input).subscribe(games=>{
-      this.games=games;
-    });
-  }
 }
