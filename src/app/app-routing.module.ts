@@ -9,6 +9,7 @@ import {EditGameComponent} from './components/edit-game/edit-game.component';
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'list',component:GameListComponent},
+  {path:'detail',component:GameDetailComponent}
 ];
 
 @NgModule({
