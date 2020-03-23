@@ -5,6 +5,7 @@ import {MenuComponent} from './components/menu/menu.component';
 import {GameListComponent} from './components/game-list/game-list.component';
 import {GameDetailComponent} from './components/game-detail/game-detail.component';
 import {EditGameComponent} from './components/edit-game/edit-game.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {path:'home',component:HomeComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path:'edit',component:EditGameComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: 'detail/:id', component: GameDetailComponent },
+  {path:'**',component: PageNotFoundComponent},
 ];
 
 @NgModule({

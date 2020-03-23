@@ -10,6 +10,7 @@ import { GameListComponent } from './components/game-list/game-list.component';
 import { GameDetailComponent } from './components/game-detail/game-detail.component';
 import { EditGameComponent } from './components/edit-game/edit-game.component';
 import { GameItemComponent } from './components/game-item/game-item.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { GameItemComponent } from './components/game-item/game-item.component';
     GameDetailComponent,
     EditGameComponent,
     GameItemComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
