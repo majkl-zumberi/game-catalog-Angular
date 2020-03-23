@@ -7,10 +7,10 @@ import {GameDetailComponent} from './components/game-detail/game-detail.componen
 import {EditGameComponent} from './components/edit-game/edit-game.component';
 
 const routes: Routes = [
-  {path:'',component:HomeComponent},
+  {path:'home',component:HomeComponent},
   {path:'list',component:GameListComponent},
   {path:'edit',component:EditGameComponent},
-  {path: '', redirectTo: 'home', pathMatch: 'full' },
+  {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: 'detail/:id', component: GameDetailComponent },
 ];
 
