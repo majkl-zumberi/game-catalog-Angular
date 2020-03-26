@@ -1,15 +1,45 @@
 <div class="container">
-    <br>
-    <input class="uk-input" type="text" placeholder="inserisci una keyword per cercare i giochi" #filterInput (change)="filterReq(filterInput.value)">
-    <p>stai cercando: {{filterInput.value}}</p>
-    <div *ngIf="!games || games.length === 0">
-        <div class="uk-card uk-card-primary  uk-card-body uk-inline-clip uk-transition-toggle ">
-           
-            <h3 class="uk-card-title">Gioco non trovato</h3>
-            <p class=" uk-margin-remove-top"></p>
-            <p></p>
-            <a href="#" class="uk-button uk-button-text"></a>
-        </div>
+  <br>
+  <input class="uk-input" type="text" placeholder="inserisci una keyword per cercare i giochi" #filterInput
+    (change)="filterReq(filterInput.value)">
+  <p>stai cercando: {{filterInput.value}}</p>
+  <div *ngIf="!games || games.length === 0">
+    <div class="uk-card uk-card-primary  uk-card-body uk-inline-clip uk-transition-toggle ">
+
+      <h3 class="uk-card-title">Gioco non trovato</h3>
+      <p class=" uk-margin-remove-top"></p>
+      <p></p>
+      <a href="#" class="uk-button uk-button-text"></a>
     </div>
-    <app-game-item *ngFor="let game of games" [gameItem]="game"></app-game-item>
+  </div>
+  <app-game-item *ngFor="let game of games" [gameItem]="game" [showForm]="true" (outputToEditGame)="getGameForForm($event)" ></app-game-item>
+
+
+  <div id="modal-sections" uk-modal>
+    <div class="uk-modal-dialog">
+      <button class="uk-modal-close-default" type="button" uk-close></button>
+      <div class="uk-modal-header">
+        <h2 class="uk-modal-title">Modifica gioco</h2>
+      </div>
+      <div class="uk-modal-body">
+        <form>
+          <fieldset class="uk-fieldset">
+
+            <div class="uk-margin">
+              <input class="uk-input" type="text" placeholder="Input" *ngIf="giocoForm != null || giocoForm!=undefined" value="{{ giocoForm.name }}">
+            </div>
+
+            <div class="uk-margin">
+              <textarea class="uk-textarea" rows="5" placeholder="Textarea" *ngIf="giocoForm != null || giocoForm!=undefined" value="{{ giocoForm.desc }}" ></textarea>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+      <div class="uk-modal-footer uk-text-right">
+        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+        <button class="uk-button uk-button-primary" type="button">Save</button>
+      </div>
+    </div>
+  </div>
 </div>

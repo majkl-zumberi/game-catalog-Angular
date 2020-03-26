@@ -9,7 +9,7 @@ import { GameInterface } from '../../models/GameInterface';
 export class EditGameComponent implements OnInit {
   games:GameInterface[];
   filterInput:string="cup";
-
+  giocoForm:GameInterface;
   constructor(private gameService:GameListService) { }
 
 
@@ -21,5 +21,10 @@ export class EditGameComponent implements OnInit {
     this.gameService.FilterListaGiochiGlobally(input).subscribe(games=>{
       this.games=games;
     });
+  }
+
+  getGameForForm(game:GameInterface){
+    console.log("sto ricevendo dal child il gioco");
+    this.giocoForm=game;
   }
 }
