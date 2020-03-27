@@ -21,4 +21,5 @@ export class GameListService {
   FilterListaGiochiGlobally(searchBy:string):Observable<GameInterface[]>{
     return this._http.get<GameInterface[]>(`${this.gamesUrl}${this.filterGlobal}${searchBy}`);
   }
+
 }

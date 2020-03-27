@@ -22,23 +22,24 @@
         <h2 class="uk-modal-title">Modifica gioco</h2>
       </div>
       <div class="uk-modal-body">
-        <form>
+        <form #editGameForm="ngForm" (ngSubmit)="editGameApi(editGameForm)" >
           <fieldset class="uk-fieldset">
 
             <div class="uk-margin">
-              <input class="uk-input" type="text" placeholder="Input" *ngIf="giocoForm != null || giocoForm!=undefined" value="{{ giocoForm.name }}">
+              <input class="uk-input" name="titleGame" type="text" placeholder="{{ giocoForm.name }}" *ngIf="giocoForm != null || giocoForm!=undefined"   [ngModel]="giocoForm.name" (keydown.enter)="$event.preventDefault()"   >
             </div>
 
             <div class="uk-margin">
-              <textarea class="uk-textarea" rows="5" placeholder="Textarea" *ngIf="giocoForm != null || giocoForm!=undefined" value="{{ giocoForm.desc }}" ></textarea>
+              <textarea class="uk-textarea" name="descGame" rows="5" placeholder="{{ giocoForm.desc }}" *ngIf="giocoForm != null || giocoForm!=undefined"  [ngModel]="giocoForm.desc" (keydown.enter)="$event.preventDefault()" ></textarea>
             </div>
 
           </fieldset>
+          <div class="uk-modal-footer uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="submit">Save</button>
+            
+          </div>
         </form>
-      </div>
-      <div class="uk-modal-footer uk-text-right">
-        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-        <button class="uk-button uk-button-primary" type="button">Save</button>
       </div>
     </div>
   </div>
