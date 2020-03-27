@@ -12,6 +12,7 @@ export class EditGameComponent implements OnInit {
   games:GameInterface[];
   filterInput:string="cup";
   giocoForm:GameInterface;
+  modalClosed:boolean=true;
   constructor(private gameService:GameListService) { }
 
 
@@ -30,6 +31,7 @@ export class EditGameComponent implements OnInit {
     this.giocoForm=game;
   }
   editGameApi(form:NgForm){
+    //change ui
     console.log("ready to edit the game!");
     console.log(form.value);
     console.log("found desc: "+form.value.titleGame);
@@ -38,6 +40,8 @@ export class EditGameComponent implements OnInit {
     });
     this.games[gameIndex].name=form.value.titleGame;
     this.games[gameIndex].desc=form.value.descGame;
+    document.getElementById("closeModal").click();
+   //put request
   }
 
 

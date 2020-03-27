@@ -15,7 +15,7 @@
   <app-game-item *ngFor="let game of games" [gameItem]="game" [showForm]="true" (outputToEditGame)="getGameForForm($event)" ></app-game-item>
 
 <!--inizio modal (form per cammbiare gioco[ che ottengo da gameItem,child che fa da eventEmitter, espone output=outputToEditGame]) -->
-  <div id="modal-sections" uk-modal>
+  <div id="modal-sections" uk-modal >
     <div class="uk-modal-dialog">
       <button class="uk-modal-close-default" type="button" uk-close></button>
       <div class="uk-modal-header">
@@ -35,7 +35,7 @@
 
           </fieldset>
           <div class="uk-modal-footer uk-text-right">
-            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button id="closeModal" class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
             <button class="uk-button uk-button-primary" type="submit">Save</button>
             
           </div>
