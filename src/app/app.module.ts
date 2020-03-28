@@ -11,6 +11,7 @@ import { GameDetailComponent } from './components/game-detail/game-detail.compon
 import { EditGameComponent } from './components/edit-game/edit-game.component';
 import { GameItemComponent } from './components/game-item/game-item.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { CanDeactivateGuard } from './guard/can-deactivate.guard';
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

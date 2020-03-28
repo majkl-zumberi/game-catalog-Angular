@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GameListService } from '../../services/game-list.service';
 import { GameInterface } from '../../models/GameInterface';
 import {NgForm} from '@angular/forms';
@@ -9,6 +9,7 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./edit-game.component.scss']
 })
 export class EditGameComponent implements OnInit {
+  @ViewChild('editGameForm') public editGameForm:NgForm;
   games:GameInterface[];
   filterInput:string="cup";
   giocoForm:GameInterface;
