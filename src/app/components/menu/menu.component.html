@@ -1,4 +1,4 @@
-<header>
+<header *ngIf="currentRoute!= '/login'">
     <div class="container">
       <a href="#" class="logo">Majkl.app</a>
       <nav>
@@ -6,6 +6,7 @@
           <li><a href="#" routerLink="/home" routerLinkActive="active">Home</a></li>
           <li><a href="#" routerLink="/list" routerLinkActive="active">Giochi</a></li>
           <li><a href="#" routerLink="/edit" routerLinkActive="active">Modifica</a></li>
+          <li><a (click)="userLogout()">Logout</a></li>
         </ul>
       </nav>
     </div>

@@ -7,13 +7,17 @@ import {GameDetailComponent} from './components/game-detail/game-detail.componen
 import {EditGameComponent} from './components/edit-game/edit-game.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CanDeactivateGuard } from './guard/can-deactivate.guard';
+import { LoginComponent } from './components/login/login.component';
+import { CanActivateGuard } from './guard/can-activate.guard';
+import { CanActivateLoginGuard } from './guard/can-activate-login.guard';
 
 const routes: Routes = [
-  {path:'home',component:HomeComponent},
-  {path:'list',component:GameListComponent},
-  {path:'edit',component:EditGameComponent,canDeactivate:[CanDeactivateGuard]},
+  {path:'home',component:HomeComponent,canActivate:[CanActivateGuard]},
+  {path:'list',component:GameListComponent,canActivate:[CanActivateGuard]},
+  {path:'edit',component:EditGameComponent,canDeactivate:[CanDeactivateGuard],canActivate:[CanActivateGuard]},
   {path: '', redirectTo: '/home', pathMatch: 'full' },
-  {path: 'detail/:id', component: GameDetailComponent },
+  {path: 'detail/:id', component: GameDetailComponent,canActivate:[CanActivateGuard]},
+  {path:"login",component:LoginComponent,canActivate:[CanActivateLoginGuard]},
   {path:'**',component: PageNotFoundComponent},
 ];
 
