@@ -48,3 +48,13 @@ A livello architetturale sono previste e richiesti i seguenti elementi (che rapp
       - Descrizione
       - Selezionato (boolean)
 
+## Introduzione del routing all’interno del portale creato nella prima esercitazione
+1. Requisiti
+   - Gestire la navigazione tra i componenti del portale, tramite il routing
+   - Creare una paginadilogin del portale (metodo di autenticazione gestito da codice lato client)
+   - Gestire l’autenticazione dell’utente registrato usando il sessionStorage
+   - Non permettere di navigare in nessuna pagina del portale (eccetto la pagina di login) senza autenticazione. (Tramite l’utilizzo delle Route Guard)
+   - Inserire nel menu un pulsante per effettuare il logout, che rimanda alla login e annulla l’autenticazione.
+   - Non permettere l’accesso alla pagina di login se si è effettuato il login.
+   - BONUS: (richiede l’aver creato la sezione modifica nella prima esercitazione) non navigare al di fuori della pagina di modifica, nel caso ci sia almeno un campo cambiato ma non salvato.
+   
