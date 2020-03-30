@@ -10,10 +10,10 @@ import { GameInterface } from '../../models/GameInterface';
 export class GameListComponent implements OnInit {
   loaded:boolean=false;
   games:GameInterface[];
-  constructor(private _gameService:GameListService) {}
+  constructor(private gameService:GameListService) {}
 
   ngOnInit(): void {
-     this._gameService.getListaGiochi().subscribe(games=>{
+     this.gameService.getListaGiochi().subscribe(games=>{
        this.games=games;
        this.loaded=true;
      });

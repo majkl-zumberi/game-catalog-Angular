@@ -9,13 +9,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GameDetailComponent implements OnInit {
   game:GameInterface;
-  constructor(private _Activatedroute:ActivatedRoute,private _game:GameListService) { }
+  constructor(private Activatedroute:ActivatedRoute,private gameService:GameListService) { }
 
   ngOnInit(): void {
-    this._Activatedroute.paramMap.subscribe(params => { 
+    this.Activatedroute.paramMap.subscribe(params => { 
       //this.id = params.get('id'); 
      // console.log(this.id);
-      this._game.getGiocoById(params.get('id')).subscribe(game=>{
+      this.gameService.getGiocoById(params.get('id')).subscribe(game=>{
         this.game=game;
       })
   });
