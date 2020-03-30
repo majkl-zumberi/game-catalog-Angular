@@ -22,7 +22,7 @@ export class EditGameComponent implements OnInit {
   }
 
   filterReq(input):void{
-    this.gameService.FilterListaGiochiGlobally(input).subscribe(games=>{
+    this.gameService.filterListaGiochiGlobally(input).subscribe(games=>{
       this.games=games;
     });
   }

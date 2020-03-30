@@ -18,7 +18,7 @@ export class GameListService {
     return this.http.get<GameInterface>(`${this.gamesUrl}/${id}`);
   }
   
-  FilterListaGiochiGlobally(searchBy:string):Observable<GameInterface[]>{
+  filterListaGiochiGlobally(searchBy:string):Observable<GameInterface[]>{
     return this.http.get<GameInterface[]>(`${this.gamesUrl}${this.filterGlobal}${searchBy}`);
   }
 
