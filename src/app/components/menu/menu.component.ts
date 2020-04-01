@@ -12,7 +12,7 @@ export class MenuComponent implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit(): void {
-    console.log(this.router.routerState.root);
+    //console.log(this.router.routerState.root);
     this.router.events.subscribe(value => {
       //console.log('current route: ', this.router.url.toString());
       this.currentRoute=this.router.url.toString();

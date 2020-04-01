@@ -15,6 +15,7 @@ import { CanDeactivateGuard } from './guard/can-deactivate.guard';
 import { CanActivateGuard } from './guard/can-activate.guard';
 import { LoginComponent } from './components/login/login.component';
 import { CardGameDirective } from './directives/card-game.directive';
+import { PriceGameDirective } from './directives/price-game.directive';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { CardGameDirective } from './directives/card-game.directive';
     PageNotFoundComponent,
     LoginComponent,
     CardGameDirective,
+    PriceGameDirective,
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,8 @@
 <div *ngIf="gameItem != null || gameItem!=undefined">
-  <div class="uk-card uk-card-primary  uk-card-body uk-inline-clip uk-transition-toggle ">
-    <div class="uk-card-badge uk-label" *ngIf="gameItem.prezzo=='free to play'; else notFree">{{ gameItem.prezzo}}</div>
+  <div class="uk-card uk-card-primary  uk-card-body uk-inline-clip uk-transition-toggle " appCardGame>
+    <div class="uk-card-badge uk-label" *ngIf="gameItem.prezzo=='free to play'; else notFree" appPriceGame>{{ gameItem.prezzo}}</div>
     <ng-template #notFree>
-      <div class="uk-card-badge uk-label">{{ gameItem.prezzo}}€</div>
+      <div class="uk-card-badge uk-label" appPriceGame>{{ gameItem.prezzo}}€</div>
     </ng-template>
     <h3 class="uk-card-title">{{ gameItem.name }}</h3>
     <p class=" uk-margin-remove-top">{{ gameItem.genere | uppercase }}</p>
