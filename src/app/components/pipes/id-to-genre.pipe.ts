@@ -12,8 +12,7 @@ export class IdToGenrePipe implements PipeTransform {
 
   transform(idGenre: number):string{
     //chiamo il servizio per ottenere la lista dei giochi e confronto l'id 
-    return this.comp.generi.find(el=>{return el.id==idGenre.toString()}).name;
-  
+    return this.comp.generi.find(el=>{return el.id==idGenre}).name;
   }
 
 }
