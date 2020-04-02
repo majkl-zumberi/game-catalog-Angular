@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { GameListService } from 'src/app/services/game-list.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,8 +10,9 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
   currentRoute:string;
   username:string;
-  constructor(private router:Router) { }
-
+  constructor(private router:Router) { 
+  }
+  
   ngOnInit(): void {
     //console.log(this.router.routerState.root);
     this.router.events.subscribe(value => {

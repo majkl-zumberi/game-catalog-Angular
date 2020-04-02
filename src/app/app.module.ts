@@ -16,6 +16,7 @@ import { CanActivateGuard } from './guard/can-activate.guard';
 import { LoginComponent } from './components/login/login.component';
 import { CardGameDirective } from './directives/card-game.directive';
 import { PriceGameDirective } from './directives/price-game.directive';
+import { IdToGenrePipe } from './components/pipes/id-to-genre.pipe';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { PriceGameDirective } from './directives/price-game.directive';
     LoginComponent,
     CardGameDirective,
     PriceGameDirective,
+    IdToGenrePipe,
   ],
   imports: [
     BrowserModule,

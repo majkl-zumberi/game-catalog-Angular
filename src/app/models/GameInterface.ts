@@ -2,6 +2,6 @@ export interface GameInterface{
     id:number;
     name:string;
     desc:string;
-    genere:string;
+    genereId:number;
     prezzo:string;
 }

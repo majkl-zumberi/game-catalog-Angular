@@ -6,10 +6,19 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GameListService {
-  private gamesUrl:string="http://my-json-server.typicode.com/majkl-zumberi/game-fake-Json-rest-api/games";
+  private gamesUrl:string="http://my-json-server.typicode.com/majkl-zumberi/TestingAPIJsonPlaceholder/games";
+  private genresUrl:string="http://my-json-server.typicode.com/majkl-zumberi/TestingAPIJsonPlaceholder/genres";
   private filterGlobal:string='?q=';
-  constructor(private http:HttpClient) { }
-
+  genreList:any;
+  constructor(private http:HttpClient) { 
+    this.getListaGeneri().subscribe(genres=>{
+      this.genreList=genres;
+    })
+  }
+  getListaGeneri():Observable<any[]>{
+    
+    return this.http.get<any>(this.genresUrl);
+  }
   getListaGiochi():Observable<GameInterface[]>{
     return this.http.get<GameInterface[]>(`${this.gamesUrl}`);
   }
@@ -20,6 +29,10 @@ export class GameListService {
   
   filterListaGiochiGlobally(searchBy:string):Observable<GameInterface[]>{
     return this.http.get<GameInterface[]>(`${this.gamesUrl}${this.filterGlobal}${searchBy}`);
+  }
+
+  getGenreById(idGenre:number):Observable<any>{
+    return this.http.get<any>(`${this.genresUrl}?id=${idGenre}`);
   }
 
 }
