@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase:{
+    apiKey: "AIzaSyCH6E65q-3u4i7rWJVfAlaevQODZBZ_Oeo",
+    authDomain: "portalevideogiochi-aa529.firebaseapp.com",
+    databaseURL: "https://portalevideogiochi-aa529.firebaseio.com",
+    projectId: "portalevideogiochi-aa529",
+    storageBucket: "portalevideogiochi-aa529.appspot.com",
+    messagingSenderId: "438537828956",
+    appId: "1:438537828956:web:ab4158d063b19635578499",
+    measurementId: "G-BFW1G6E4T0"
+  }
 };
 
 /*

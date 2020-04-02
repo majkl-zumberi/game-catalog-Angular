@@ -17,8 +17,10 @@ import { LoginComponent } from './components/login/login.component';
 import { CardGameDirective } from './directives/card-game.directive';
 import { PriceGameDirective } from './directives/price-game.directive';
 import { IdToGenrePipe } from './components/pipes/id-to-genre.pipe';
-
-
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,9 +38,12 @@ import { IdToGenrePipe } from './components/pipes/id-to-genre.pipe';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,//solo per andare ad utilizzare firestore (db)
+    AngularFireAuthModule
   ],
   providers: [CanDeactivateGuard,CanActivateGuard],
   bootstrap: [AppComponent]
