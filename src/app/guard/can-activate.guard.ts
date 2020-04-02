@@ -11,7 +11,7 @@ export class CanActivateGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-     console.log("sono dentro "+sessionStorage.getItem("user"));
+     //console.log("sono dentro "+JSON.parse(sessionStorage.getItem("user")).name);
      
   
       if(sessionStorage.getItem("user")!=null){

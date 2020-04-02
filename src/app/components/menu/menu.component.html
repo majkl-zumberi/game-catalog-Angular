@@ -1,21 +1,23 @@
-<header *ngIf="currentRoute!= '/login'">
-  <div class="container">
-    <a href="#" class="logo">Majkl.app</a>
-    <nav>
-      <ul>
-        <li><a href="#" routerLink="/home" routerLinkActive="active">Home</a></li>
-        <li><a href="#" routerLink="/list" routerLinkActive="active">Giochi</a></li>
-        <li><a href="#" routerLink="/edit" routerLinkActive="active">Modifica</a></li>
-        <a>{{ username }}</a>
-        <div uk-dropdown>
-          <ul class="uk-nav uk-dropdown-nav">
-            <li><a class="logout-color uk-button uk-button-text" (click)="userLogout()">Logout</a></li>
-          </ul>
-        </div>
-      </ul>
-    </nav>
-  </div>
-</header>
+<ng-container *ngIf="currentRoute!== '/signUp' ">
+  <header *ngIf="currentRoute!== '/login' ">
+    <div class="container">
+      <a href="#" class="logo">Majkl.app</a>
+      <nav>
+        <ul>
+          <li><a href="#" routerLink="/home" routerLinkActive="active">Home</a></li>
+          <li><a href="#" routerLink="/list" routerLinkActive="active">Giochi</a></li>
+          <li><a href="#" routerLink="/edit" routerLinkActive="active">Modifica</a></li>
+          <a>{{ username }}</a>
+          <div uk-dropdown>
+            <ul class="uk-nav uk-dropdown-nav">
+              <li><a class="logout-color uk-button uk-button-text" (click)="userLogout()">Logout</a></li>
+            </ul>
+          </div>
+        </ul>
+      </nav>
+    </div>
+  </header>
+</ng-container>
 <div class="container">
   <router-outlet></router-outlet>
 </div>

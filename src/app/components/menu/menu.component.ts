@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { GameListService } from 'src/app/services/game-list.service';
+
 
 @Component({
   selector: 'app-menu',
@@ -16,9 +16,9 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     //console.log(this.router.routerState.root);
     this.router.events.subscribe(value => {
-      //console.log('current route: ', this.router.url.toString());
+      console.log('current route: ', this.router.url.toString());
       this.currentRoute=this.router.url.toString();
-      this.username=sessionStorage.getItem("user");
+      this.username=sessionStorage.getItem("user")== null ? "" : JSON.parse(sessionStorage.getItem("user")).name;
   });
   }
   userLogout(){

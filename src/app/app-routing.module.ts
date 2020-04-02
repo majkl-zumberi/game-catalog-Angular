@@ -10,6 +10,7 @@ import { CanDeactivateGuard } from './guard/can-deactivate.guard';
 import { LoginComponent } from './components/login/login.component';
 import { CanActivateGuard } from './guard/can-activate.guard';
 import { CanActivateLoginGuard } from './guard/can-activate-login.guard';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 const routes: Routes = [
   {path:'home',component:HomeComponent,canActivate:[CanActivateGuard]},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: 'detail/:id', component: GameDetailComponent,canActivate:[CanActivateGuard]},
   {path:"login",component:LoginComponent,canActivate:[CanActivateLoginGuard]},
+  {path:"signUp",component:RegistrationComponent},
   {path:'**',component: PageNotFoundComponent},
 ];
 

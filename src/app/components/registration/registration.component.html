@@ -1,0 +1,45 @@
+<img class="wave" src="../../../assets/wave.png">
+<div class="container">
+  <div class="img">
+    <img src="../../../assets/bg.svg">
+  </div>
+  <div class="login-content">
+    <form #formUserLogin="ngForm" (ngSubmit)="signInUser(formUserLogin)">
+      <img src="../../../assets/avatar.svg">
+      <h2 class="title">Registrati</h2>
+      <div class="input-div one">
+        <div class="i">
+          <i class="fas fa-user"></i>
+        </div>
+        
+        
+        <div class="div">
+
+            <input type="text" class="input" placeholder="nome utente" [(ngModel)]="username" name="username" required>
+          </div>
+      </div>
+      <div class="input-div one">
+        <div class="i">
+          <i class="fas fa-user"></i>
+        </div>
+        
+        
+        <div class="div">
+
+          <input type="email" class="input" placeholder="email" [(ngModel)]="email" name="email" required>
+        </div>
+      </div>
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fas fa-lock"></i>
+        </div>
+        <div class="div">
+          <input type="password" class="input" placeholder="password" [(ngModel)]="password" name="password" required>
+        </div>
+      </div>
+
+      <input type="submit" class="btn" value="Registrati">
+    </form>
+
+  </div>
+</div>
