@@ -1,4 +1,4 @@
-import { Injectable, ViewChild } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GameInterface } from '../models/GameInterface';
 import { GenreInterface } from '../models/GenreInterface';
