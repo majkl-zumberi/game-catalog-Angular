@@ -6,7 +6,7 @@
 		<div class="login-content">
             <form #formUserLogin="ngForm" (ngSubmit)="loginUser(formUserLogin)">
                 <img src="../../../assets/avatar.svg">
-				<h2 class="title">Welcome</h2>
+				<h2 class="title">Accedi</h2>
            		<div class="input-div one">
            		   <div class="i">
            		   		<i class="fas fa-user"></i>
@@ -24,7 +24,7 @@
            		    	<input type="password" class="input" placeholder="password" [(ngModel)]="password" name="password">
             	   </div>
             	</div>
-                <a >Forgot Password?</a>
+                <a routerLink="/signUp">non hai un account? Registrati</a>
                 <input type="submit" class="btn" value="Login">
             </form>
 			
