@@ -1,10 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { MenuComponent } from '../menu/menu.component';
+import { GameListService } from 'src/app/services/game-list.service';
+
 
 @Pipe({
   name: 'idToGenre'
 })
 export class IdToGenrePipe implements PipeTransform {
+
   constructor(){
   }
   transform(idGenre: number):any{

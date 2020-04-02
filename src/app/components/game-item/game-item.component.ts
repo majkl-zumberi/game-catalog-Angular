@@ -1,6 +1,8 @@
 import { Component, OnInit,Input,EventEmitter,Output} from '@angular/core';
 import { GameInterface } from 'src/app/models/GameInterface';
-
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/it';
+registerLocaleData(localeFr, 'it');
 @Component({
   selector: 'app-game-item',
   templateUrl: './game-item.component.html',

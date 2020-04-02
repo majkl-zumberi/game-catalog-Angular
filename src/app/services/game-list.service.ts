@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GameInterface } from '../models/GameInterface';
 import { Observable } from 'rxjs';
@@ -9,11 +9,7 @@ export class GameListService {
   private gamesUrl:string="http://my-json-server.typicode.com/majkl-zumberi/TestingAPIJsonPlaceholder/games";
   private genresUrl:string="http://my-json-server.typicode.com/majkl-zumberi/TestingAPIJsonPlaceholder/genres";
   private filterGlobal:string='?q=';
-  genreList:any;
   constructor(private http:HttpClient) { 
-    this.getListaGeneri().subscribe(genres=>{
-      this.genreList=genres;
-    })
   }
   getListaGeneri():Observable<any[]>{
     
