@@ -1,6 +1,7 @@
 import { Injectable, ViewChild } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GameInterface } from '../models/GameInterface';
+import { GenreInterface } from '../models/GenreInterface';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class GameListService {
   private gamesUrl:string="http://my-json-server.typicode.com/majkl-zumberi/game-fake-Json-rest-api/games";
   private genresUrl:string="http://my-json-server.typicode.com/majkl-zumberi/game-fake-Json-rest-api/genres";
   private filterGlobal:string='?q=';
-  generi: any[]=[]; 
+  generi: GenreInterface[]=[]; 
   constructor(private http:HttpClient) { 
     this.getListaGeneri().subscribe(list=>{
       this.generi=list;
