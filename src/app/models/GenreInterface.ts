@@ -1,5 +1,4 @@
 export interface GenreInterface{
-    id:number;
+    id:string;
     name:string;
-    
 }

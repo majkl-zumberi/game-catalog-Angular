@@ -9,10 +9,10 @@ export class IdToGenrePipe implements PipeTransform {
 
   constructor(private comp:GameListService){
   }
-
-  transform(idGenre: number):string{
-    //chiamo il servizio per ottenere la lista dei giochi e confronto l'id 
-    return this.comp.generi.find(el=>{return el.id==idGenre}).name;
+  transform(idGenre: number):any{
+    
+    return this.comp.generi.find(el=>{return el.id==idGenre.toString()}).name;
+  
   }
 
 }
