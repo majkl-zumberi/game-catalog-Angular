@@ -9,7 +9,11 @@ export class GameListService {
   private gamesUrl:string="http://my-json-server.typicode.com/majkl-zumberi/game-fake-Json-rest-api/games";
   private genresUrl:string="http://my-json-server.typicode.com/majkl-zumberi/game-fake-Json-rest-api/genres";
   private filterGlobal:string='?q=';
+  generi: any[]=[]; 
   constructor(private http:HttpClient) { 
+    this.getListaGeneri().subscribe(list=>{
+      this.generi=list;
+    })
   }
   getListaGeneri():Observable<any[]>{
     

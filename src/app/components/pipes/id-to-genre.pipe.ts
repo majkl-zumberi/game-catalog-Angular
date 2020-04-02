@@ -7,32 +7,13 @@ import { GameListService } from 'src/app/services/game-list.service';
 })
 export class IdToGenrePipe implements PipeTransform {
 
-  constructor(){
+  constructor(private comp:GameListService){
   }
-  transform(idGenre: number):any{
-    var memet=[
-      {
-        "id": "1",
-        "name": "GDR"
-      },
-      {
-        "id": "2",
-        "name": "azione"
-      },
-      {
-        "id": "3",
-        "name": "sport"
-      },
-      {
-        "id": "4",
-        "name": "Picchiaduro"
-      },
-      {
-        "id": "5",
-        "name": "Sparatutto in terza persona"
-      }
-    ];
-   return  memet.find(el=>{return el.id==idGenre.toString()}).name;
+
+  transform(idGenre: number):string{
+    //chiamo il servizio per ottenere la lista dei giochi e confronto l'id 
+    return this.comp.generi.find(el=>{return el.id==idGenre.toString()}).name;
+  
   }
 
 }
