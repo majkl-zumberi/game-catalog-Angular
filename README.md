@@ -58,3 +58,40 @@ A livello architetturale sono previste e richiesti i seguenti elementi (che rapp
    - Non permettere l’accesso alla pagina di login se si è effettuato il login.
    - BONUS: (richiede l’aver creato la sezione modifica nella prima esercitazione) non navigare al di fuori della pagina di modifica, nel caso ci sia almeno un campo cambiato ma non salvato.
    
+
+## GESTIONE ADMIN
+
+  - Gestire l’accesso tramite login, con almeno due utenti differenti, in cui uno sarà l’admin e l’altro l’utente normale.
+  - Una volta effettuato la login, salvare il fatto di aver fatto accesso come admin o meno.
+  - Header: mostrare in alto a sinistra, il nome dell’utente che ha effettuato il login
+  - Navigazione: nel menu di navigazione, visualizzare la voce di modifica solamente all’admin
+  - Pagina dettaglio: non mostrare il pulsante “modifica”, se non si è admin
+  - Pagina modifica: non permettere l’accesso a tale pagina se non si è admin. Usare lo stesso route guard già esistente
+
+## Gestione dell’attributo genere di un videogioco
+
+  - Creare un file ts, con una variabile lista di oggetti con due parametri (id e description) che servono a definire i possibili generi di videogioco (definendone almeno 5)  Es. [{id: 1, description: “Action RPG”}]
+  - Se non lo si è fatto, definire l’attributo genere nella classe GameItem, creata nelle vecchie esercitazioni dello stesso tipo dell’id dichiarata nella lista creata precedentemente
+  - Fare in modo di avere almeno 20 videogiochi nella propria lista, definendone il genere solamente tramite l’id e non la descrizione. (associare tutti i generi)
+  - Pagina lista: creare una select, che contiene tra le option tutti i generi definiti. Tale select dovrà mostrare le descrizioni dei generi, ma dare riferimento dell’id per l’opzione selezionata. Inoltre, aggiungere l’option di default {id: null, description: “Tutti”}
+  - Pagina lista: tramite l’id del genere selezionato filtrare la lista mostrando solamente i giochi appartenenti a quel genere, in entrambi questi modi:
+    - Tramite utilizzo del ng-container
+    - Filtrando la lista nel component
+  - Nota: Attuare entrambi i metodi in sequenza e versionare il codice al completamento di ciascuno (così da avere una prova di entrambi gli sviluppi). Dopo di che, scegliere in base alla propria preferenza, quale metodo lasciare
+
+## Pipes
+
+  - Se non sono già presenti, dichiarare gli attributi amount (tipo number) e releaseDate (tipo Date) per la classe GameItem
+  - Usare rispettivamente le pipes core di angular CurrencyPipe e DatePipe, per visualizzare in maniera corretta tali informazioni all’interno del portale
+  - Creare una pipe custom che ricevuto in ingresso un id di un genere ne mostra il dettaglio. Usare tale direttiva all’interno del portale
+
+## Attribute Directive
+
+  - Creare una direttiva custom, da applicare nella lista dei videogiochi, per far sì che quando viene scatenato l’evento di mouseenter su ognuno di essi, lo stile cambia (lasciata libertà di scelta, in base allo stile scelto nel proprio portale…l’importante è modificare almeno un attributo visibile)
+  - Modificare tale direttiva, in modo da avere un effetto diverso se si è admin o meno
+  - BONUS 1: trovare, se c’è, un modo per dare un effetto diverso in base al genere del gioco selezionato, sempre tramite la direttiva.
+  - BONUS 2: provare ad avere lo stesso effetto tramite un assegnamento dinamico delle classi css sulla lista.
+  - BONUS 3: discutere le differenze tra i due approcci dei primi due punti bonus
+
+  
+   
