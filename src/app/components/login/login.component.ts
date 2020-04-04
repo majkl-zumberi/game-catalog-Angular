@@ -1,25 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
-import { Router } from '@angular/router';
+import {NgForm, FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { errors } from '../../models/loginErrorsMessages';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  username:string;
-  password:string;
-  constructor(private router:Router,private auth:AuthService) { }
+  error:string='campo obbligatorio';
+  loginError:string='';
+  loginForm:FormGroup;
+
+  get usernameControl():FormControl{
+    return this.loginForm.get('username') as FormControl;
+  }
+  get passwordControl():FormControl{
+    return this.loginForm.get('password') as FormControl;
+  }
+  
+  constructor(private fb:FormBuilder,private auth:AuthService) { 
+    this.loginForm=this.fb.group({
+      username:['',Validators.required],
+      password:['',Validators.required]
+    });
+  }
 
   ngOnInit(): void {
+    console.log(errors);
   }
-  loginUser(form:NgForm){
+  loginUser(){
     console.log("user attempted to login");
-    console.log(form.value.username);
+   
     //sessionStorage.setItem("user",form.value.username);
    // this.router.navigateByUrl("/home");
-   this.auth.signIn(form.value.username,form.value.password);
+   this.auth.signIn(this.usernameControl.value,this.passwordControl.value);
+   this.auth.errMessage$.subscribe(message=>{
+     this.loginError=errors[message];
+     console.log(message);
+   });
 
   }
 }

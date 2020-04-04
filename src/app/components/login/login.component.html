@@ -4,28 +4,40 @@
 			<img src="../../../assets/bg.svg">
 		</div>
 		<div class="login-content">
-            <form #formUserLogin="ngForm" (ngSubmit)="loginUser(formUserLogin)">
+            <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
                 <img src="../../../assets/avatar.svg">
 				<h2 class="title">Accedi</h2>
+				<div class="uk-alert-danger" uk-alert *ngIf="loginError!= ''">
+					<p>{{ loginError }}</p>
+				</div>
            		<div class="input-div one">
            		   <div class="i">
            		   		<i class="fas fa-user"></i>
            		   </div>
            		   <div class="div">
            		   		
-           		   		<input type="text" class="input" placeholder="Username" [(ngModel)]="username" name="username">
-           		   </div>
-           		</div>
+							  <input type="text" class="input" placeholder="Username"  formControlName="username" >
+							  
+					  </div>
+					  
+				   </div>
+				   <div class="uk-alert-danger" uk-alert *ngIf="error!= '' && usernameControl.status === 'INVALID' && usernameControl.dirty">
+					<p>{{ error }}</p>
+				</div>
            		<div class="input-div pass">
            		   <div class="i"> 
            		    	<i class="fas fa-lock"></i>
            		   </div>
            		   <div class="div">
-           		    	<input type="password" class="input" placeholder="password" [(ngModel)]="password" name="password">
+           		    	<input type="password" class="input" placeholder="password"  formControlName="password" >
             	   </div>
-            	</div>
+				</div>
+				<div class="uk-alert-danger" uk-alert  *ngIf="error!= ''&& passwordControl.status === 'INVALID' && passwordControl.dirty">
+
+					<p>{{ error }}</p>
+				</div>
                 <a routerLink="/signUp">non hai un account? Registrati</a>
-                <input type="submit" class="btn" value="Login">
+                <input type="submit" class="btn" value="Login" [disabled]="loginForm.status === 'INVALID'">
             </form>
 			
         </div>

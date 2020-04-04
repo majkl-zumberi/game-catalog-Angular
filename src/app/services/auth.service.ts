@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private errMessageSource=new Subject<string>();
+  errMessage$=this.errMessageSource.asObservable();
   user:Observable<firebase.User>;
   authState;
   constructor(private afAuth:AngularFireAuth,private router:Router) { 
@@ -40,6 +42,7 @@ export class AuthService {
       }
     ).catch( err =>{
       console.log(`Something went wrong: ${err.message}`);
+      this.errMessageSource.next(err.message);
     })
   }
 
@@ -53,6 +56,7 @@ export class AuthService {
       }
     ).catch( err =>{
       console.log(`Something went wrong: ${err.message}`);
+      this.errMessageSource.next(err.message);
     })
   }
 }
