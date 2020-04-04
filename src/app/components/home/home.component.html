@@ -1,1 +1,19 @@
 <h1>Welcome into {{name}} app!</h1>
+<h3>i tuoi dati</h3>
+<div *ngIf="auth.user$ | async as user">
+    <div class="uk-section uk-section-muted">
+        <div class="uk-container uk-container-small">
+            <ul>
+                <li *ngFor="let item of user | keyvalue">
+                    <ng-container *ngIf="item.key!= 'birthDate' && item.key!= 'uid'; else showBirthDate"> 
+                         {{item.key}}: {{item.value}}
+                        </ng-container>  
+                    <ng-template #showBirthDate>data di nascita: {{ user.birthDate.toDate() | date:'dd/MM/yyyy' }}</ng-template>
+                </li>
+            </ul>
+            
+        </div>
+    </div>
+   
+
+</div>

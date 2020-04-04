@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { User } from '../models/userModel';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,15 +14,22 @@ export class AuthService {
   errMessage$=this.errMessageSource.asObservable();
   user:Observable<firebase.User>;
   authState;
-  constructor(private afAuth:AngularFireAuth,private router:Router) { 
+  user$:Observable<any>;
+  constructor(private afAuth:AngularFireAuth,private router:Router,private afs:AngularFirestore) { 
     this.user = this.afAuth.authState;
     this.afAuth.authState.subscribe((auth) => {
       this.authState = auth;
     });
-    console.log("this.user");
-    console.log(this.user);
-    console.log("this.authState");
-    console.log(this.authState);
+    this.user$=this.afAuth.authState.pipe(
+      switchMap(user=>{
+        if(user){
+          console.log(this.afs.doc<User>(`users/${user.uid}`).valueChanges());
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+        } else{
+          return of(null);
+        }
+      })
+    );
   }
 
 
@@ -59,4 +69,23 @@ export class AuthService {
       this.errMessageSource.next(err.message);
     })
   }
+
+  async signOut(){
+    await this.afAuth.signOut();
+    sessionStorage.removeItem("user");
+    return this.router.navigateByUrl("/login");
+  }
+
+  updateUserData({uid,birthDate,male,displayName,email,role}:User){
+    const userRef:AngularFirestoreDocument<User>=this.afs.doc(`users/${uid}`);
+    const data={
+      uid,
+      birthDate,
+      male,
+      displayName,
+      email,role
+    };
+    return userRef.set(data, {merge:true});
+  }
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
   currentRoute:string;
   username:string;
-  constructor(private router:Router) { 
+  constructor(private router:Router,private afAuth:AuthService) { 
   }
   
   ngOnInit(): void {
@@ -22,7 +23,8 @@ export class MenuComponent implements OnInit {
   });
   }
   userLogout(){
-    sessionStorage.removeItem("user");
-    this.router.navigateByUrl("/login");
+   // sessionStorage.removeItem("user");
+   // this.router.navigateByUrl("/login");
+  this.afAuth.signOut();
   }
 }
