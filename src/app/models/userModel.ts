@@ -6,5 +6,5 @@ export interface User{
     male?:boolean,
     displayName:string,
     role:string,
-    birthDate?:Timestamp<Date>
+    birthDate?:string
 }

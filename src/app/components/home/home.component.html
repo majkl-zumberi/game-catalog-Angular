@@ -1,19 +1,65 @@
 <h1>Welcome into {{name}} app!</h1>
 <h3>i tuoi dati</h3>
 <div *ngIf="auth.user$ | async as user">
-    <div class="uk-section uk-section-muted">
-        <div class="uk-container uk-container-small">
-            <ul>
-                <li *ngFor="let item of user | keyvalue">
-                    <ng-container *ngIf="item.key!= 'birthDate' && item.key!= 'uid'; else showBirthDate"> 
-                         {{item.key}}: {{item.value}}
-                        </ng-container>  
-                    <ng-template #showBirthDate>data di nascita: {{ user.birthDate.toDate() | date:'dd/MM/yyyy' }}</ng-template>
-                </li>
-            </ul>
-            
-        </div>
+  <div class="uk-section uk-section-muted">
+    <div class="uk-container uk-container-small">
+      <ul>
+        <li *ngFor="let item of user | keyvalue" class="uk-list">
+          <ng-container *ngIf="item.key!= 'birthDate'; else showBirthDate">
+            <ng-container *ngIf="item.key!= 'uid'">
+              {{item.key}}: {{item.value}}
+            </ng-container>
+          </ng-container>
+          <ng-template #showBirthDate>data di nascita: {{ user.birthDate }}</ng-template>
+        </li>
+      </ul>
+
     </div>
-   
+  </div>
+  <!-- This is a button toggling the modal -->
+  <button class="uk-button uk-button-default uk-margin-small-right" type="button"
+    uk-toggle="target: #modal-editUser">modifica i tuoi dati</button>
+
+  <!-- This is the modal -->
+  <div id="modal-editUser" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+      <button id="closeModal" class="uk-modal-close-default" type="button" uk-close></button>
+      <h2 class="uk-modal-title">modifica i tuoi dati</h2>
+      <form [formGroup]="editDataUserForm" (ngSubmit)="updateUser()">
+        <fieldset class="uk-fieldset">
+
+
+          <div class="uk-margin">
+            <input class="uk-input" type="text" placeholder="email" required formControlName="emailUser">
+          </div>
+          <div class="uk-margin">
+            <input class="uk-input" type="text" placeholder="name" required formControlName="username">
+          </div>
+          <div class="uk-margin">
+            <input class="uk-input" type="date" required formControlName="data">
+          </div>
+
+
+          <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+            <label>
+              <input class="uk-radio" type="radio" value="true" checked formControlName="gender">
+              <span>Maschio</span>
+            </label>
+            <label>
+              <input class="uk-radio" type="radio" value="false" formControlName="gender">
+              <span>Femmina</span>
+            </label>
+          </div>
+
+
+        </fieldset>
+        <p class="uk-text-right">
+            
+          <button class="uk-button uk-button-default uk-modal-close" type="button">Annulla</button>
+          <button class="uk-button uk-button-primary" type="submit" [disabled]="editDataUserForm.status === 'INVALID'">Salva</button>
+        </p>
+      </form>
+    </div>
+  </div>
 
 </div>
