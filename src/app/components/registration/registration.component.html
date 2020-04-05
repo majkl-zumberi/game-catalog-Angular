@@ -4,19 +4,12 @@
     <img src="../../../assets/bg.svg">
   </div>
   <div class="login-content">
-    <form #formUserLogin="ngForm" (ngSubmit)="signInUser(formUserLogin)">
+    <form [formGroup]="formUserLogin" (ngSubmit)="signUpUser()">
       <img src="../../../assets/avatar.svg">
       <h2 class="title">Registrati</h2>
-      <div class="input-div one">
-        <div class="i">
-          <i class="fas fa-user"></i>
-        </div>
-        
-        
-        <div class="div">
+      <div class="uk-alert-danger" uk-alert  *ngIf="signUpError!= '' ">
 
-            <input type="text" class="input" placeholder="nome utente" [(ngModel)]="username" name="username" required>
-          </div>
+        <p>{{ signUpError }}</p>
       </div>
       <div class="input-div one">
         <div class="i">
@@ -26,16 +19,39 @@
         
         <div class="div">
 
-          <input type="email" class="input" placeholder="email" [(ngModel)]="email" name="email" required>
+            <input type="text" class="input" placeholder="nome utente"  formControlName="username">
+          </div>
+      </div>
+      <div class="uk-alert-danger" uk-alert  *ngIf="formError!= ''&& usernameControl.status === 'INVALID' && usernameControl.dirty">
+
+        <p>{{ formError }}</p>
+      </div>
+      <div class="input-div one">
+        <div class="i">
+          <i class="fas fa-user"></i>
         </div>
+        
+        
+        <div class="div">
+
+          <input type="email" class="input" placeholder="email"  formControlName="email">
+        </div>
+      </div>
+      <div class="uk-alert-danger" uk-alert  *ngIf="formError!= ''&& emailControl.status === 'INVALID' && emailControl.dirty">
+
+        <p>{{ formError }}</p>
       </div>
       <div class="input-div pass">
         <div class="i">
           <i class="fas fa-lock"></i>
         </div>
         <div class="div">
-          <input type="password" class="input" placeholder="password" [(ngModel)]="password" name="password" required>
+          <input type="password" class="input" placeholder="password"  formControlName="password">
         </div>
+      </div>
+      <div class="uk-alert-danger" uk-alert  *ngIf="formError!= ''&& passwordControl.status === 'INVALID' && passwordControl.dirty">
+
+        <p>{{ formError }}</p>
       </div>
       <a routerLink="/login">hai già un account? Accedi</a>
       <input type="submit" class="btn" value="Registrati">

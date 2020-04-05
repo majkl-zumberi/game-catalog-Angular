@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { errors } from '../../models/loginErrorsMessages';
 
 @Component({
   selector: 'app-registration',
@@ -8,17 +9,35 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  username:string;
-  email:string;
-  password:string;
-  constructor(private auth:AuthService) { }
+  formUserLogin:FormGroup;
+  signUpError:string='';
+  formError:string='campo obbligatorio';
+  get emailControl():FormControl{
+    return this.formUserLogin.get('email') as FormControl;
+  }
+  get usernameControl():FormControl{
+    return this.formUserLogin.get('username') as FormControl;
+  }
+  get passwordControl():FormControl{
+    return this.formUserLogin.get('password') as FormControl;
+  }
+  constructor(private auth:AuthService,private fb:FormBuilder) {
+    this.formUserLogin=this.fb.group({
+      username:['',Validators.required],
+      email:['',Validators.required],
+      password:['',Validators.required],
+    });
+   }
 
   ngOnInit(): void {
   }
 
-  signInUser(form:NgForm){
+  signUpUser(){
     console.log("user attempted to register");
-    console.log(form.value);
-    this.auth.signUp(form.value.email,form.value.password,form.value.username);
+    //console.log(form.value);
+    this.auth.signUp(this.emailControl.value,this.passwordControl.value,this.usernameControl.value);
+    this.auth.errMessage$.subscribe(error=>{
+      this.signUpError=errors[error];
+    })
   }
 }
