@@ -8,6 +8,7 @@
     <p class=" uk-margin-remove-top">{{ gameItem.genereId | idToGenre | uppercase}}</p>
     <p>{{ gameItem.desc }}</p>
     <a [routerLink]="['/detail', gameItem.id]" class="uk-button uk-button-text" [class.hide]="!showRead">Read more </a>
+    <a [routerLink]="['/edit', gameItem.id]" class="uk-button uk-button-text" [class.hide]="showForm">Modifica </a>
     <a class="uk-button uk-button-text" href="#modal-sections" [class.hide]="!showForm" uk-toggle (click)=(tranferGameToForm(gameItem))>Modifica</a>
   </div>
 </div>

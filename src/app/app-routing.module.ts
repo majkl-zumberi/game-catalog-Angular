@@ -16,9 +16,10 @@ import { CanActivateRegistrationGuard } from './guard/can-activate-registration.
 const routes: Routes = [
   {path:'home',component:HomeComponent,canActivate:[CanActivateGuard]},
   {path:'list',component:GameListComponent,canActivate:[CanActivateGuard]},
-  {path:'edit',component:EditGameComponent,canDeactivate:[CanDeactivateGuard],canActivate:[CanActivateGuard]},
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: 'detail/:id', component: GameDetailComponent,canActivate:[CanActivateGuard]},
+  {path:'edit/:id',component:EditGameComponent,canDeactivate:[CanDeactivateGuard],canActivate:[CanActivateGuard]},
+  {path:'edit',component:EditGameComponent,canDeactivate:[CanDeactivateGuard],canActivate:[CanActivateGuard]},
   {path:"login",component:LoginComponent,canActivate:[CanActivateLoginGuard]},
   {path:"signUp",component:RegistrationComponent,canActivate:[CanActivateRegistrationGuard]},
   {path:'**',component: PageNotFoundComponent},

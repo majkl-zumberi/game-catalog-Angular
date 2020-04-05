@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { GameListService } from '../../services/game-list.service';
 import { GameInterface } from '../../models/GameInterface';
 import {NgForm} from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-game',
@@ -14,11 +15,23 @@ export class EditGameComponent implements OnInit {
   filterInput:string="cup";
   giocoForm:GameInterface;
   modalClosed:boolean=true;
-  constructor(private gameService:GameListService) { }
+  constructor(private gameService:GameListService,private Activatedroute:ActivatedRoute) { }
 
 
   ngOnInit(): void {
-    this.filterReq("");
+    console.log("porcodio");
+
+    this.Activatedroute.paramMap.subscribe(params => { 
+      //this.id = 
+      console.log("trovato parametro"+params.get('id'));
+      
+      params.get('id') == null? this.filterReq(""):  this.gameService.getGiocoById(params.get('id')).subscribe(game=>{
+        console.log(`game: ${game.name}`);
+        this.filterReq(game.name);
+        this.filterInput=game.name;
+      })
+  });
+  
   }
 
   filterReq(input):void{

@@ -6,7 +6,7 @@
         <ul>
           <li><a href="#" routerLink="/home" routerLinkActive="active">Home</a></li>
           <li><a href="#" routerLink="/list" routerLinkActive="active">Giochi</a></li>
-          <li><a href="#" routerLink="/edit" routerLinkActive="active">Modifica</a></li>
+          <li *ngIf="role === 'admin'"><a href="#" routerLink="/edit" routerLinkActive="active">Modifica</a></li>
           <a>{{ username }}</a>
           <div uk-dropdown>
             <ul class="uk-nav uk-dropdown-nav">
