@@ -12,14 +12,15 @@ import { CanActivateGuard } from './guard/can-activate.guard';
 import { CanActivateLoginGuard } from './guard/can-activate-login.guard';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { CanActivateRegistrationGuard } from './guard/can-activate-registration.guard';
+import { CanActivateEditGuard } from './guard/can-activate-edit.guard';
 
 const routes: Routes = [
   {path:'home',component:HomeComponent,canActivate:[CanActivateGuard]},
   {path:'list',component:GameListComponent,canActivate:[CanActivateGuard]},
   {path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: 'detail/:id', component: GameDetailComponent,canActivate:[CanActivateGuard]},
-  {path:'edit/:id',component:EditGameComponent,canDeactivate:[CanDeactivateGuard],canActivate:[CanActivateGuard]},
-  {path:'edit',component:EditGameComponent,canDeactivate:[CanDeactivateGuard],canActivate:[CanActivateGuard]},
+  {path:'edit/:id',component:EditGameComponent,canDeactivate:[CanDeactivateGuard],canActivate:[CanActivateEditGuard,CanActivateGuard]},
+  {path:'edit',component:EditGameComponent,canDeactivate:[CanDeactivateGuard],canActivate:[CanActivateEditGuard,CanActivateGuard]},
   {path:"login",component:LoginComponent,canActivate:[CanActivateLoginGuard]},
   {path:"signUp",component:RegistrationComponent,canActivate:[CanActivateRegistrationGuard]},
   {path:'**',component: PageNotFoundComponent},
