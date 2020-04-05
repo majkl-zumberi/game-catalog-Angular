@@ -37,17 +37,29 @@ export class AuthService {
       user=>{
         console.log(`Success!, ${user}`);
         console.log(user);
-        sessionStorage.setItem("user",user.user.uid);
+        sessionStorage.setItem("user",JSON.stringify({uid:user.user.uid,name:username}));
         //aggiorno nome profilo
         user.user.updateProfile({
           displayName: username
-        }).then(function() {
-          console.log(`ho aggiornato l'utente, ${user}`);
-          this.router.navigateByUrl('/home');
+        }).then(()=> {
+          console.log(`ho aggiornato l'utente, ${user}`);//`users/${user.user.uid}`
+          //this.updateUserData(user.user.uid,'',null,username,email,'normal');
         }).catch(function(error) {
           console.log("non sono riuscito ad aggiornare l'utente"+error.message);
           this.router.navigateByUrl('/home');
         });
+        let usr:User={
+          uid:user.user.uid,
+          displayName:username,
+          email:email,
+          role:'normal',
+          birthDate:'',
+          male:null
+        }
+        this.updateUserData(usr).then(()=>{
+          this.router.navigateByUrl('/home');
+        });
+        
       }
     ).catch( err =>{
       console.log(`Something went wrong: ${err.message}`);
@@ -85,6 +97,7 @@ export class AuthService {
       email,role
     };
     return userRef.set(data, {merge:true});
+    
   }
 
 }
