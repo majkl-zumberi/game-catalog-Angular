@@ -19,10 +19,7 @@ export class EditGameComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log("porcodio");
-
     this.Activatedroute.paramMap.subscribe(params => { 
-      //this.id = 
       console.log("trovato parametro"+params.get('id'));
       
       params.get('id') == null? this.filterReq(""):  this.gameService.getGiocoById(params.get('id')).subscribe(game=>{
