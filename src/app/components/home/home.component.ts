@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
       this.editDataUserForm=this.fb.group({
         emailUser:[{value:user.email,disabled:true}],
         username:[{value:user.displayName,disabled:true}],
-        data:user.birthDate,
+        data:new Date(user.birthDate).toISOString().substring(0, 10),
         gender:user.male,
       });
     })
