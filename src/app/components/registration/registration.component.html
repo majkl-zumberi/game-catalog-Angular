@@ -53,6 +53,18 @@
 
         <p>{{ formError }}</p>
       </div>
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fas fa-lock"></i>
+        </div>
+        <div class="div">
+          <input type="password" class="input" placeholder="conferma password"  formControlName="passwordConfirm">
+        </div>
+      </div>
+      <div class="uk-alert-danger" uk-alert  *ngIf="formError!= ''&& passwordConfirmControl.status === 'INVALID' && passwordConfirmControl.dirty">
+
+        <p>{{ formError }}</p>
+      </div>
       <a routerLink="/login">hai già un account? Accedi</a>
       <input type="submit" class="btn" value="Registrati">
     </form>

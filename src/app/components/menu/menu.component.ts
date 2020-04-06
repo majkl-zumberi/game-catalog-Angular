@@ -20,11 +20,16 @@ export class MenuComponent implements OnInit {
     this.router.events.subscribe(value => {
       console.log('current route: ', this.router.url.toString());
       this.currentRoute=this.router.url.toString();
-      this.username=sessionStorage.getItem("user")== null ? "" : JSON.parse(sessionStorage.getItem("user")).name;
-      this.afAuth.user$.subscribe(user=>{
-        console.log(user.role);
-        this.role=user.role;
-      });
+      if(this.currentRoute !="/login"){
+        this.username=sessionStorage.getItem("user")== null ? "" : JSON.parse(sessionStorage.getItem("user")).name;
+        this.afAuth.user$.subscribe(user=>{
+         // console.log(user.role);
+         if(user != null){
+           this.role=user.role;
+         }
+        });
+
+      }
   });
  
   }

@@ -21,11 +21,15 @@ export class RegistrationComponent implements OnInit {
   get passwordControl():FormControl{
     return this.formUserLogin.get('password') as FormControl;
   }
+  get passwordConfirmControl():FormControl{
+    return this.formUserLogin.get('passwordConfirm') as FormControl;
+  }
   constructor(private auth:AuthService,private fb:FormBuilder) {
     this.formUserLogin=this.fb.group({
       username:['',Validators.required],
       email:['',Validators.required],
       password:['',Validators.required],
+      passwordConfirm:['',Validators.required],
     });
    }
 
@@ -35,9 +39,26 @@ export class RegistrationComponent implements OnInit {
   signUpUser(){
     console.log("user attempted to register");
     //console.log(form.value);
-    this.auth.signUp(this.emailControl.value,this.passwordControl.value,this.usernameControl.value);
-    this.auth.errMessage$.subscribe(error=>{
-      this.signUpError=errors[error];
-    })
+    if(this.passwordConfirmControl.value == this.passwordControl.value){
+      this.auth.signUp(this.emailControl.value,this.passwordControl.value,this.usernameControl.value);
+      this.auth.errMessage$.subscribe(error=>{
+        this.signUpError=errors[error];
+      });
+    }
+    else{
+      this.signUpError="le password non corrispondono";
+      console.log("password non corrispondono");
+      this.clearForm();
+    }
   }
+
+  clearForm() {
+
+    this.formUserLogin.reset({
+          'username': this.usernameControl.value,
+          'email': this.emailControl.value,
+          'password': '',
+          'passwordCofirm': ''
+         });
+    }
 }
