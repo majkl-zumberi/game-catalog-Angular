@@ -35,5 +35,7 @@ export class GameListService {
   getGenreById(idGenre:number):Observable<any>{
     return this.http.get<any>(`${this.genresUrl}?id=${idGenre}`);
   }
-
+  filterGiochiByGenre(id:number):Observable<GameInterface[]>{
+    return this.http.get<any>(`http://my-json-server.typicode.com/majkl-zumberi/game-fake-Json-rest-api/games?genereId=${id}`);
+  }
 }

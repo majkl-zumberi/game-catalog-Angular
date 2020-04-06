@@ -1,8 +1,16 @@
 <div class="container">
   <br>
-  <input class="uk-input" type="text" placeholder="inserisci una keyword per cercare i giochi" #filterInput
+  <input class="uk-input" type="text" placeholder="cerca il gioco in base al nome o prezzo" #filterInput
     (change)="filterReq(filterInput.value)">
-  <p>stai cercando: {{filterInput.value}}</p>
+  <p *ngIf="filterInput.value!=''">stai cercando: {{filterInput.value}}</p>
+  <div class="uk-margin">
+  <select (change)="filterBygenere($event.target.value)" class="uk-select">
+    <option value="all">tutti</option>
+    <ng-container *ngFor="let genere of genres">
+      <option [value]="genere.id">{{ genere.name }}</option>
+    </ng-container>
+  </select>
+  </div>
   <div *ngIf="!games || games.length === 0">
     <div class="uk-card uk-card-primary  uk-card-body uk-inline-clip uk-transition-toggle ">
 
