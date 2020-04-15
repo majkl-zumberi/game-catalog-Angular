@@ -22,6 +22,7 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { RatingToStarsPipe } from './components/pipes/rating-to-stars.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { RegistrationComponent } from './components/registration/registration.co
     PriceGameDirective,
     IdToGenrePipe,
     RegistrationComponent,
+    RatingToStarsPipe,
   ],
   imports: [
     BrowserModule,

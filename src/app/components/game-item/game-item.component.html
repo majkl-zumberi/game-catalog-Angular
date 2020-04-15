@@ -6,6 +6,7 @@
     </ng-template>
     <h3 class="uk-card-title">{{ gameItem.name }}</h3>
     <p class=" uk-margin-remove-top">{{ gameItem.genereId | idToGenre | uppercase}}</p>
+    <span class=" uk-margin-remove-top" [outerHTML]="gameItem.rating | ratingToStars"></span>
     <p>{{ gameItem.desc }}</p>
     <a [routerLink]="['/detail', gameItem.id]" class="uk-button uk-button-text" [class.hide]="!showRead">Read more </a>
     <ng-container *ngIf="showEdit">

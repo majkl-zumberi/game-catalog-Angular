@@ -4,4 +4,5 @@ export interface GameInterface{
     desc:string;
     genereId:number;
     prezzo:string;
+    rating:number;
 }

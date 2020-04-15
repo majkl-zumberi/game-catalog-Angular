@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GameListService {
-  private gamesUrl:string="http://my-json-server.typicode.com/majkl-zumberi/game-fake-Json-rest-api/games";
-  private genresUrl:string="http://my-json-server.typicode.com/majkl-zumberi/game-fake-Json-rest-api/genres";
+  private gamesUrl:string="http://my-json-server.typicode.com/majkl-zumberi/TestingAPIJsonPlaceholder/games";
+  private genresUrl:string="http://my-json-server.typicode.com/majkl-zumberi/TestingAPIJsonPlaceholder/genres";
   private filterGlobal:string='?q=';
   generi: GenreInterface[]=[]; 
   constructor(private http:HttpClient) { 
