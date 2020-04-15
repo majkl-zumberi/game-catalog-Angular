@@ -1,0 +1,2 @@
+<span *ngFor="let item of [1,2,3,4,5]" (click)="valueRating=item" [ngClass]="{'selected': item <= valueRating, 'no-selected' : item>valueRating}"><i class="fas fa-star"></i></span>
+            {{ valueRating }}

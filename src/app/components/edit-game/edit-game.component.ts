@@ -18,6 +18,8 @@ export class EditGameComponent implements OnInit {
   giocoForm:GameInterface;
   modalClosed:boolean=true;
   genres:GenreInterface[];
+  
+  valueRating:number;
   constructor(private gameService:GameListService,private Activatedroute:ActivatedRoute) { }
 
 
@@ -47,6 +49,7 @@ export class EditGameComponent implements OnInit {
 
   getGameForForm(game:GameInterface):void{
     console.log("sto ricevendo dal child il gioco "+game.name);
+    this.valueRating=game.rating;
     this.giocoForm=game;
   }
   editGameApi(form:NgForm){

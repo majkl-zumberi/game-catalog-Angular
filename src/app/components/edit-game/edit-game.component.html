@@ -40,7 +40,8 @@
             <div class="uk-margin">
               <textarea class="uk-textarea" name="descGame" rows="5" placeholder="{{ giocoForm.desc }}" *ngIf="giocoForm != null || giocoForm!=undefined"  [ngModel]="giocoForm.desc" (keydown.enter)="$event.preventDefault()" ></textarea>
             </div>
-
+            <app-rating [valueRating]=valueRating></app-rating>
+            
           </fieldset>
           <div class="uk-modal-footer uk-text-right">
             <button id="closeModal" class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>

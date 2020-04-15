@@ -23,6 +23,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { RatingToStarsPipe } from './components/pipes/rating-to-stars.pipe';
+import { RatingComponent } from './components/rating/rating.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +40,7 @@ import { RatingToStarsPipe } from './components/pipes/rating-to-stars.pipe';
     IdToGenrePipe,
     RegistrationComponent,
     RatingToStarsPipe,
+    RatingComponent,
   ],
   imports: [
     BrowserModule,
